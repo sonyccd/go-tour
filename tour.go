@@ -44,7 +44,7 @@ func main() {
 	box_test := make_box(2,3)
 	fmt.Printf("%T\n", box_test)
 	fmt.Println(box_test.height,box_test.width)
-	cuncur()
+	fmt.Println(squrt(10.0))
 }
 
 // look mom I can return more than one thing :p
@@ -95,6 +95,17 @@ func timeout(t chan bool) {
 func make_box(w, h int) *box{
 	temp := box{w,h}
 	return &temp
+}
+
+func squrt(v float64) float64{
+	approx := 0.5 * v
+	var delta float64 = 1
+	for delta > 0.0001{
+		temp_approx := 0.5 * (approx + v/approx)
+		delta = math.Abs(temp_approx-approx)
+		approx = temp_approx
+	}
+	return approx
 }
 
 func cuncur(){
