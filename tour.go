@@ -45,6 +45,7 @@ func main() {
 	fmt.Printf("%T\n", box_test)
 	fmt.Println(box_test.height,box_test.width)
 	fmt.Println(squrt(10.0))
+	fmt.Println(math.Sqrt(10))
 }
 
 // look mom I can return more than one thing :p
@@ -75,8 +76,6 @@ func pow(x, n, lim float64) float64 {
 	}
 	return lim
 }
-
-
 
 func readword(ch chan string) {
 	fmt.Println("Type a word, then hit Enter.")
