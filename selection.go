@@ -5,32 +5,32 @@ import (
 	"time"
 )
 
-func main(){
+func main() {
 	//bidirectional chan
 	ch1 := make(chan string)
 	ch2 := make(chan string)
 	//anon function
-	go func(){
-		for{
+	go func() {
+		for {
 			ch1 <- "from ch1"
 			time.Sleep(time.Second * 1)
 		}
-	}()// have to add the () at the end to invoke the function
+	}() // have to add the () at the end to invoke the function
 
-	go func(){
-		for{
+	go func() {
+		for {
 			ch2 <- "from ch2"
 			time.Sleep(time.Second * 2)
 		}
 	}()
 
-	go func(){
-		for{
+	go func() {
+		for {
 			//which one is avalible do that
-			select{
-			case msg1 := <- ch1:
+			select {
+			case msg1 := <-ch1:
 				fmt.Println(msg1)
-			case msg2 := <- ch2:
+			case msg2 := <-ch2:
 				fmt.Println(msg2)
 			default:
 				fmt.Print(".")

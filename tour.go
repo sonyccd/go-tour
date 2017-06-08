@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"math/cmplx"
 	"math"
+	"math/cmplx"
 	"time"
 )
 
@@ -14,8 +14,8 @@ var (
 	z      complex128 = cmplx.Sqrt(-5 + 12i)
 )
 
-type box struct{
-	width int
+type box struct {
+	width  int
 	height int
 	//volume
 }
@@ -30,7 +30,7 @@ const (
 
 func main() {
 	x := 20
-	ar := []int{1,2,3,4,5,6}
+	ar := []int{1, 2, 3, 4, 5, 6}
 	fmt.Println(x)
 	fmt.Printf("x is of %T\n", x)
 	sum := func(a, b int) int { return a + b }(3, 4)
@@ -40,10 +40,10 @@ func main() {
 	fmt.Println(swap(first, second))
 	fmt.Println(upDown(100))
 	fmt.Println(summ(ar))
-	fmt.Println(pow(3,2,10))
-	box_test := make_box(2,3)
+	fmt.Println(pow(3, 2, 10))
+	box_test := make_box(2, 3)
 	fmt.Printf("%T\n", box_test)
-	fmt.Println(box_test.height,box_test.width)
+	fmt.Println(box_test.height, box_test.width)
 	fmt.Println(squrt(10.0))
 	fmt.Println(math.Sqrt(10))
 }
@@ -91,23 +91,23 @@ func timeout(t chan bool) {
 
 //make a box and return a pointer to it
 // go will just put it on the heap for you
-func make_box(w, h int) *box{
-	temp := box{w,h}
+func make_box(w, h int) *box {
+	temp := box{w, h}
 	return &temp
 }
 
-func squrt(v float64) float64{
+func squrt(v float64) float64 {
 	approx := 0.5 * v
 	var delta float64 = 1
-	for delta > 0.0001{
+	for delta > 0.0001 {
 		temp_approx := 0.5 * (approx + v/approx)
-		delta = math.Abs(temp_approx-approx)
+		delta = math.Abs(temp_approx - approx)
 		approx = temp_approx
 	}
 	return approx
 }
 
-func cuncur(){
+func cuncur() {
 	t := make(chan bool)
 	go timeout(t)
 

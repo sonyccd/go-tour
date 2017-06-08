@@ -5,21 +5,21 @@ import (
 	"time"
 )
 
-func ping(ch chan string){
-	for{
+func ping(ch chan string) {
+	for {
 		ch <- "ping"
 	}
 }
 
-func catcher(ch chan string){
-	for{
-		msg := <- ch
+func catcher(ch chan string) {
+	for {
+		msg := <-ch
 		fmt.Println(msg)
 		time.Sleep(time.Second * 1)
 	}
 }
 
-func main(){
+func main() {
 	var ch chan string = make(chan string)
 
 	go ping(ch)
