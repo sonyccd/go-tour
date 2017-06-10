@@ -5,12 +5,17 @@ import (
 	"log"
 	"net/http"
 	"sync"
+	_ "net/http/pprof"
 )
 
 var mu sync.Mutex
 var count int
 
 func main() {
+	go func(){
+		log.Println(http.ListenAndServe("localhost:6060", nil))
+	}()
+
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/count", counter)
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
